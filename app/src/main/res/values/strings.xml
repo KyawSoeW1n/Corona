@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Corona News</string>
+    <string name="sample">Sample</string>
+    <string name="total_deaths">Total Deaths</string>
+    <string name="total_recovered">Total Recovered  </string>
+    <string name="total_cases">Total Cases</string>
+    <string name="country_name">Country Name</string>
+    <string name="today_deaths">Today Deaths</string>
+    <string name="today_cases">Today Cases</string>
+    <string name="cancel">Cancel</string>
+    <string name="search_icon">Search Country Name</string>
+</resources>

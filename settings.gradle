@@ -1,0 +1,2 @@
+include ':app', ':presentation', ':remote', ':data', ':domain'
+rootProject.name='Corona'

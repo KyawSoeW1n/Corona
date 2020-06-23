@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_smaller">2dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_medium_2">16dp</dimen>
+    <dimen name="margin_medium_3">20dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+    <dimen name="margin_xxlarge">48dp</dimen>
+    <dimen name="margin_xxxlarge">60dp</dimen>
+    <dimen name="margin_uxlarge">120dp</dimen>
+    <dimen name="margin_card_medium">6dp</dimen>
+    <dimen name="margin_card_medium_2">12dp</dimen>
+
+    <dimen name="textSizeNormal">14sp</dimen>
+    <dimen name="textSizeLarge">16sp</dimen>
+
+    <dimen name="img_icon">50sp</dimen>
+
+</resources>

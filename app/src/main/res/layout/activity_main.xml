@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@drawable/bg_corner_round"
+                android:drawableStart="@drawable/ic_search_black_24dp"
+                android:drawablePadding="@dimen/margin_medium"
+                android:hint="@string/search_icon"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="@dimen/margin_medium"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeNormal" />
+
+            <TextView
+                android:id="@+id/txt_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textSizeNormal"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_medium"
+                android:layout_weight="1"
+                android:background="@drawable/light_red_round_corner_reactangle"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_medium">
+
+                <TextView
+                    android:id="@+id/totalCases"
+                    style="@style/TextViewNormalWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/textSizeNormal"
+                    tools:text="@string/sample" />
+
+
+                <TextView
+                    style="@style/TextViewNormalWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/total_cases"
+                    android:textSize="@dimen/textSizeNormal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_weight="1"
+                android:background="@drawable/red_round_corner_reactangle"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_medium">
+
+                <TextView
+                    android:id="@+id/totalDeaths"
+                    style="@style/TextViewNormalWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/textSizeNormal"
+                    tools:text="@string/sample" />
+
+                <TextView
+                    style="@style/TextViewNormalWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/total_deaths"
+                    android:textSize="@dimen/textSizeNormal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_medium"
+                android:layout_weight="1"
+                android:background="@drawable/green_round_corner_reactangle"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_medium">
+
+                <TextView
+                    android:id="@+id/totalRecovered"
+                    style="@style/TextViewNormalWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/textSizeNormal"
+                    tools:text="@string/sample" />
+
+                <TextView
+                    style="@style/TextViewNormalWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/total_recovered"
+                    android:textSize="@dimen/textSizeNormal" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_rates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            tools:listitem="@layout/country_listitem" />
+    </LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

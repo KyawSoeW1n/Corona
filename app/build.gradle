@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
+
+    compileOptions.incremental = false
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    defaultConfig {
+        applicationId "com.kurio.corona"
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        versionCode 1
+        multiDexEnabled true
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            manifestPlaceholders = [enableReporting: "true"]
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            manifestPlaceholders = [enableReporting: "false"]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    def mobileUiDependencies = rootProject.ext.mobileUiDependencies
+    def mobileUiTestDependencies = rootProject.ext.mobileUiTestDependencies
+
+    implementation project(':presentation')
+    implementation project(':data')
+    implementation project(':remote')
+    implementation project(':domain')
+
+    implementation mobileUiDependencies.gson
+    implementation mobileUiDependencies.javaxAnnotation
+    implementation mobileUiDependencies.javaxInject
+    implementation mobileUiDependencies.rxJava
+    implementation mobileUiDependencies.androidAnnotations
+    implementation mobileUiDependencies.androidSupportV4
+    implementation mobileUiDependencies.androidSupportV13
+    implementation mobileUiDependencies.appCompatV7
+    implementation mobileUiDependencies.supportRecyclerView
+    implementation mobileUiDependencies.supportDesign
+    implementation mobileUiDependencies.rxAndroid
+    implementation mobileUiDependencies.glide
+    implementation mobileUiDependencies.dagger
+    implementation mobileUiDependencies.daggerSupport
+    implementation mobileUiDependencies.scalarConverter
+    implementation mobileUiDependencies.archRuntime
+    implementation mobileUiDependencies.archExtensions
+    implementation mobileUiDependencies.constraintLayout
+    implementation mobileUiDependencies.appCompatV7
+
+    annotationProcessor mobileUiDependencies.archCompiler
+    annotationProcessor mobileUiDependencies.daggerCompiler
+    annotationProcessor mobileUiDependencies.daggerProcessor
+
+    // Instrumentation test dependencies
+    androidTestImplementation mobileUiTestDependencies.junit
+    androidTestImplementation mobileUiTestDependencies.mockito
+    androidTestImplementation mobileUiTestDependencies.mockitoAndroid
+    androidTestImplementation(mobileUiTestDependencies.espressoCore) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation(mobileUiTestDependencies.androidRunner) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation(mobileUiTestDependencies.androidRules) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation(mobileUiTestDependencies.espressoIntents) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation(mobileUiTestDependencies.espressoContrib) {
+        exclude module: 'appcompat'
+        exclude module: 'appcompat-v7'
+        exclude module: 'support-v4'
+        exclude module: 'support-v13'
+        exclude module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'design'
+    }
+
+    testAnnotationProcessor mobileUiDependencies.daggerCompiler
+    androidTestAnnotationProcessor mobileUiDependencies.daggerCompiler
+//    implementation 'androidx.exifinterface:exifinterface:1.1.0-alpha01'
+//    implementation 'org.jetbrains:annotations:15.0'
+//    implementation 'org.jetbrains:annotations:15.0'
+}

@@ -1,0 +1,19 @@
+apply plugin: 'java-library'
+
+dependencies {
+    def domainDependencies = rootProject.ext.domainDependencies
+    def domainTestDependencies = rootProject.ext.domainTestDependencies
+
+    implementation domainDependencies.javaxAnnotation
+    implementation domainDependencies.javaxInject
+    implementation domainDependencies.rxJava
+    implementation domainDependencies.okHttp
+    implementation domainDependencies.retrofit
+
+    testImplementation domainTestDependencies.junit
+    testImplementation domainTestDependencies.mockito
+    testImplementation domainTestDependencies.assertj
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
