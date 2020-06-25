@@ -41,18 +41,15 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         coronaViewModel = ViewModelProviders.of(this, viewModelFactory).get(CoronaViewModel.class);
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        activityMainBinding.setVm(coronaViewModel);
+        activityMainBinding.setLifecycleOwner(this);
         coronaViewModel.getTotalCases();
         coronaViewModel.getAllCountries();
         activityMainBinding.recyclerViewRates.setAdapter(countryListAdapter);
         activityMainBinding.recyclerViewRates.setLayoutManager(layoutManager);
         coronaViewModel.getAllCountriesLiveData().observe(this, this::getAllCountries);
-    }
-
-    @Override
-    protected void initDataBinding() {
-        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        activityMainBinding.setVm(coronaViewModel);
-        activityMainBinding.setLifecycleOwner(this);
+        setUpListener();
     }
 
     @Override
@@ -63,7 +60,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        setUpListener();
+
     }
 
     @Override

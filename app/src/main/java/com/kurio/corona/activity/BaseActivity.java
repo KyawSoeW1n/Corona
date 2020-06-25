@@ -17,17 +17,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidInjection.inject(this);
-        initDataBinding();
         mActivity = this;
         mContext = mActivity.getBaseContext();
         initComponent();
         initData();
     }
-
-    /**
-     * the method for UI component pre-setting
-     */
-    protected abstract void initDataBinding();
 
     /**
      * the method for UI component pre-setting
