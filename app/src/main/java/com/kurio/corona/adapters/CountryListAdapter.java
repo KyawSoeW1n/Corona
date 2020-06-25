@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 
 import com.kurio.corona.R;
+import com.kurio.corona.databinding.CountryListitemBinding;
 import com.kurio.corona.domain.model.AllCountries;
 import com.kurio.corona.viewholder.BaseViewHolder;
 import com.kurio.corona.viewholder.CoronaViewHolder;
@@ -20,7 +21,7 @@ public class CountryListAdapter extends BaseRecyclerAdapter<CoronaViewHolder, Al
     @NonNull
     @Override
     public BaseViewHolder<AllCountries> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = layoutInflater.inflate(R.layout.country_listitem, parent, false);
-        return new CoronaViewHolder(v);
+        CountryListitemBinding countryListitemBinding = CountryListitemBinding.inflate(layoutInflater, parent, false);
+        return new CoronaViewHolder(countryListitemBinding);
     }
 }

@@ -1,130 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardUseCompatPadding="true">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <data>
+
+        <variable
+            name="countryData"
+            type="com.kurio.corona.domain.model.AllCountries" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true">
 
-        <ImageView
-            android:id="@+id/imgFlag"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.5"
-            android:scaleType="fitXY"
-            tools:ignore="ContentDescription" />
+            android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/margin_small">
+            <ImageView
+                android:id="@+id/imgFlag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:scaleType="fitXY"
+                android:src="@{countryData.flag}"
+                tools:ignore="ContentDescription" />
 
-            <TextView
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="@string/country_name" />
+                android:padding="@dimen/margin_small">
 
-            <TextView
-                android:id="@+id/tvCountryName"
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="@string/country_name" />
+                <TextView
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/country_name" />
 
-            <TextView
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvCountryName"
-                android:layout_alignParentStart="true"
-                android:text="@string/total_cases" />
+                <TextView
+                    android:id="@+id/tvCountryName"
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{countryData.country}" />
 
-            <TextView
-                android:id="@+id/tvTotalCases"
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvCountryName"
-                android:layout_alignParentEnd="true"
-                android:text="@string/country_name" />
+                <TextView
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvCountryName"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/total_cases" />
 
-            <TextView
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTotalCases"
-                android:layout_alignParentStart="true"
-                android:text="@string/today_cases" />
+                <TextView
+                    android:id="@+id/tvTotalCases"
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvCountryName"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{Integer.toString(countryData.deaths)}" />
 
-            <TextView
-                android:id="@+id/tvTodayCases"
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTotalCases"
-                android:layout_alignParentEnd="true"
-                android:text="@string/country_name" />
+                <TextView
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTotalCases"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/today_cases" />
 
-            <TextView
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTodayCases"
-                android:layout_alignParentStart="true"
-                android:text="@string/total_deaths" />
+                <TextView
+                    android:id="@+id/tvTodayCases"
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTotalCases"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{Integer.toString(countryData.todayCases)}" />
 
-            <TextView
-                android:id="@+id/tvTotalDeaths"
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTodayCases"
-                android:layout_alignParentEnd="true"
-                android:text="@string/country_name" />
+                <TextView
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTodayCases"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/total_deaths" />
 
-            <TextView
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTotalDeaths"
-                android:layout_alignParentStart="true"
-                android:text="@string/today_deaths" />
+                <TextView
+                    android:id="@+id/tvTotalDeaths"
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTodayCases"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{Integer.toString(countryData.deaths)}" />
 
-            <TextView
-                android:id="@+id/tvTodayDeaths"
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTotalDeaths"
-                android:layout_alignParentEnd="true"
-                android:text="@string/country_name" />
+                <TextView
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTotalDeaths"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/today_deaths" />
 
-            <TextView
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTodayDeaths"
-                android:layout_alignParentStart="true"
-                android:text="@string/total_recovered" />
+                <TextView
+                    android:id="@+id/tvTodayDeaths"
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTotalDeaths"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{Integer.toString(countryData.todayDeaths)}" />
 
-            <TextView
-                android:id="@+id/tvRecovered"
-                style="@style/TextViewNormalBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTodayDeaths"
-                android:layout_alignParentEnd="true"
-                android:text="@string/country_name" />
-        </RelativeLayout>
+                <TextView
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTodayDeaths"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/total_recovered" />
 
-    </FrameLayout>
+                <TextView
+                    android:id="@+id/tvRecovered"
+                    style="@style/TextViewNormalBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTodayDeaths"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{Integer.toString(countryData.recovered)}" />
+            </RelativeLayout>
+
+        </FrameLayout>
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,6 +1,7 @@
 package com.kurio.corona.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import androidx.annotation.NonNull;

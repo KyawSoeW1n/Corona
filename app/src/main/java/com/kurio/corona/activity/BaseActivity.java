@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import dagger.android.AndroidInjection;
+
 public abstract class BaseActivity extends AppCompatActivity {
     protected Context mContext;
     protected Activity mActivity;
@@ -14,7 +16,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        renderScreen();
+        AndroidInjection.inject(this);
+        initDataBinding();
         mActivity = this;
         mContext = mActivity.getBaseContext();
         initComponent();
@@ -22,11 +25,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * all the common setting for all the activity screen
+     * the method for UI component pre-setting
      */
-    private void renderScreen() {
-        setContentView(getLayoutId());
-    }
+    protected abstract void initDataBinding();
 
     /**
      * the method for UI component pre-setting
