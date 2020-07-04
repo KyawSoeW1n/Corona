@@ -9,4 +9,5 @@
     <string name="today_cases">Today Cases</string>
     <string name="cancel">Cancel</string>
     <string name="search_icon">Search Country Name</string>
+    <string name="no_internet_available">No connection Available</string>
 </resources>
