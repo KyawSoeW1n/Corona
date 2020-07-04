@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity {
     CoronaViewModel coronaViewModel;
     RecyclerView recycler_view_rates;
     RecyclerView.LayoutManager layoutManager;
-    LinearLayout searchLayout;
+    LinearLayout searchLayout, noInternetLayout;
     EditText edtSearch;
     List<AllCountries> countriesList = new ArrayList<>();
     List<AllCountries> filterCountryList = new ArrayList<>();
@@ -64,6 +64,7 @@ public class MainActivity extends BaseActivity {
         cancelTxt = findViewById(R.id.txt_cancel);
         searchLayout = findViewById(R.id.search_layout);
         edtSearch = findViewById(R.id.edt_search);
+        noInternetLayout = findViewById(R.id.ll_no_internet);
         totalCases = findViewById(R.id.totalCases);
         totalDeaths = findViewById(R.id.totalDeaths);
         totalRecovered = findViewById(R.id.totalRecovered);
@@ -156,9 +157,9 @@ public class MainActivity extends BaseActivity {
             if (swipeLayout.isRefreshing()) {
                 swipeLayout.setRefreshing(false);
             }
-            countriesList.clear();
             if (resource.data != null) {
-                countriesList = resource.data;
+                countriesList.clear();
+                countriesList.addAll(resource.data);
                 countryListAdapter.addNewData(countriesList);
             }
         } else if (resource.state == ResourceState.LOADING) {
@@ -176,7 +177,17 @@ public class MainActivity extends BaseActivity {
                 totalRecovered.setText(String.valueOf(resource.data.getRecovered()));
             }
         } else if (resource.state == ResourceState.LOADING) {
-            Log.i("Currency Loading", "Loading");
+            Log.i("Loading", "Loading");
         }
+    }
+
+    @Override
+    void isOnline() {
+        noInternetLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    void isOffline() {
+        noInternetLayout.setVisibility(View.VISIBLE);
     }
 }
